@@ -8,13 +8,18 @@ class AutomatedGuiRoutine(object):
         self.numberOfTimesToRepeatRoutine = numberOfTimesToRepeatRoutine
 
     def Process(self):
-        isRoutineComplete = False
+        inputListener = self.ListenInputs()
+        self.RepeatInputs(inputListener)
 
+    def ListenInputs(self) -> InputListener:
         inputListener = InputListener()
+        isRoutineComplete = False
         while not isRoutineComplete:
             inputListener.ListenOneMouseClick()
             isRoutineComplete = inputListener.ListenOneKeyPressed()
+        return inputListener
 
+    def RepeatInputs(self, inputListener: InputListener):
         for event in inputListener.events:
             event.process()
             sleep(self.timeInSecondsBetweenEvents)

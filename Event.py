@@ -1,6 +1,7 @@
 from pynput.mouse import Button, Controller
 from Position import Position
 
+
 class Event(object):
     def __init__(self, button: Button, position: Position, pressed: bool) -> object:
         self.button = button

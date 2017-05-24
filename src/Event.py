@@ -1,5 +1,6 @@
 from pynput.mouse import Button, Controller
-from Position import Position
+
+from src.Position import Position
 
 
 class Event(object):

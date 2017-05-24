@@ -1,5 +1,6 @@
 from time import sleep
-from InputListener import InputListener
+
+from src.InputListener import InputListener
 
 timeInSecondsBetweenEvents = 1
 IsRoutineComplete = False

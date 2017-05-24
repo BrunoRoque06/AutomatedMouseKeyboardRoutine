@@ -1,8 +1,9 @@
-from pynput.mouse import Button
 from pynput import mouse
 from pynput.keyboard import Key, Listener
-from Event import Event
-from Position import Position
+from pynput.mouse import Button
+
+from src.Event import Event
+from src.Position import Position
 
 
 class InputListener(object):

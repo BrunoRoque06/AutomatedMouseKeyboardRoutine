@@ -3,7 +3,7 @@ from pynput.mouse import Button, Controller
 from src.Position import Position
 
 
-class Event(object):
+class MouseEvent(object):
     def __init__(self, button: Button, position: Position, pressed: bool) -> object:
         self.button = button
         self.position = position

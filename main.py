@@ -1,18 +1,8 @@
-from time import sleep
+from src.AutomatedGuiRoutine import AutomatedGuiRoutine
 
-from src.InputListener import InputListener
 
 timeInSecondsBetweenEvents = 1
 numberOfTimesToRepeatRoutine = 1
-IsRoutineComplete = False
 
-inputListener = InputListener()
-while not IsRoutineComplete:
-    inputListener.ListenOneMouseClick()
-    IsRoutineComplete = inputListener.ListenOneKeyPressed()
-
-for event in inputListener.events:
-    event.process()
-    sleep(timeInSecondsBetweenEvents)
-
-print('Jobs done.')
+automatedGuiRoutine = AutomatedGuiRoutine(timeInSecondsBetweenEvents, numberOfTimesToRepeatRoutine)
+automatedGuiRoutine.Process()

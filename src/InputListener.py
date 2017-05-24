@@ -2,7 +2,8 @@ from pynput import mouse
 from pynput.keyboard import Key, Listener
 from pynput.mouse import Button
 
-from src.Event import Event
+from src.KeyboardEvent import KeyboardEvent
+from src.MouseEvent import MouseEvent
 from src.Position import Position
 
 
@@ -12,17 +13,19 @@ class InputListener(object):
         self.IsRoutineComplete = False
 
     def PressKey(self, key) -> bool:
-        print('{0} pressed'.format(key))
+        keyboardEvent = KeyboardEvent(key, True)
+        self.events.append(keyboardEvent)
 
     def ReleaseKey(self, key) -> bool:
-        print('{0} release'.format(key))
+        keyboardEvent = KeyboardEvent(key, True)
+        self.events.append(keyboardEvent)
         if key == Key.esc:
             self.IsRoutineComplete = True
         return False  # Stop listener
 
     def MouseClick(self, x: int, y: int, button: Button, pressed) -> bool:
-        event = Event(button, Position(x, y), pressed)
-        self.events.append(event)
+        mouseEvent = MouseEvent(button, Position(x, y), pressed)
+        self.events.append(mouseEvent)
         if not pressed:
             return False  # Stop listener
 

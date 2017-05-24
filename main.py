@@ -2,12 +2,17 @@ from pynput.mouse import Button, Controller
 from pynput import mouse
 from pynput.keyboard import Key, Listener
 
+from time import sleep
 
-def on_press(key) -> bool:
+from Event import Event
+from Position import Position
+
+
+def PressKey(key) -> bool:
     print('{0} pressed'.format(key))
 
 
-def on_release(key) -> bool:
+def ReleaseKey(key) -> bool:
     print('{0} release'.format(key))
     if key == Key.esc:
         global IsRoutineOver
@@ -15,24 +20,13 @@ def on_release(key) -> bool:
     return False  # Stop listener
 
 
-class Position(object):
-    def __init__(self, x: int, y: int) -> object:
-        self.x = x
-        self.y = y
-
-
-class Event(object):
-    def __init__(self, button: Button, position: Position) -> object:
-        self.button = button
-        self.position = position
-
-
-def on_click(x: int, y: int, button: Button, pressed) -> bool:
-    event = Event(button, Position(x, y))
+def ClickMouse(x: int, y: int, button: Button, pressed) -> bool:
+    event = Event(button, Position(x, y), pressed)
     events.append(event)
     if not pressed:
         return False  # Stop listener
 
+timeInSecondsBetweenEvents = 1
 
 global events
 events = []
@@ -41,17 +35,16 @@ global IsRoutineOver
 IsRoutineOver = False
 
 while not IsRoutineOver:
-    with mouse.Listener(on_click=on_click) as mouseListener:
+    with mouse.Listener(on_click=ClickMouse) as mouseListener:
         mouseListener.join()
 
-    with Listener(on_press=on_press,on_release=on_release) as keyboardListener:
+    with Listener(on_press=PressKey, on_release=ReleaseKey) as keyboardListener:
         keyboardListener.join()
 
-mouse = Controller()
+
 for event in events:
-    mouse.position = (event.position.x, event.position.y)
-    mouse.press(event.button)
-    mouse.release(event.button)
-    print("Position " + str(event.position.x) + " " + str(event.position.y) + " " + str(event.button))
+    event.process()
+    print("Position " + str(event.position.x) + " " + str(event.position.y) + " " + str(event.button) + " " + str(event.pressed))
+    sleep(timeInSecondsBetweenEvents)
 
 print('Jobs done.')

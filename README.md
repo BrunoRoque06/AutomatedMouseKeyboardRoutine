@@ -1,14 +1,18 @@
 # Automated GUI Routine
 
 
-This projects receives a routine of mouse clicks, defined by the user, and repeats it. 
+This projects receives a routine of mouse clicks and keyboard inputs, defined by the user, and repeats it. 
 
 
 How to use:
 * Click a mouse button (right or left button);
-* Press any keyboard key, other than ESC, to add another click;
-* Press mouse button again, etc;
-* When ESC is pressed, routine is finished and it is then repeated automatically.
+* To add another mouse event, press Left Control;
+* Press mouse button again, repeat as many times as desired;
+* To add text, type it before pressing Left Control;
+* To end the routine press Escape;
+* Routine is then repeated.
 
 
-Keyboard mimicking will be supported later.
+Main Keys:
+* __Left Control__, ends string and renews mouse button listener;
+* __Escape__, end routine, starts mimicking.

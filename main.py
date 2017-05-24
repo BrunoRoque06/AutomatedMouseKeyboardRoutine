@@ -1,32 +1,29 @@
-from ctypes import windll, Structure, c_ulong, byref
+from pynput.mouse import Button, Controller
+from pynput import mouse
 
 
-class Point(Structure):
-    _fields_ = [("x", c_ulong), ("y", c_ulong)]
+class SubRoutine(object):
+    Clicks = []
 
 
-class PointXY:
-    x = 0
-    y = 0
+def on_click(x, y, button, pressed):
+    print('{0} at {1}'.format(
+        'Pressed' if pressed else 'Released',
+        (x, y)))
+    if not pressed:
+        # Stop listener
+        return False
 
 
-class Mouse(object):
-    def QueryPosition(self):
-        point = Point()
-        windll.user32.GetCursorPos(byref(point))
-        return point
-
-    def LeftClick(self, point):
-        windll.user32.SetCursorPos(point.x, point.y)
-        windll.user32.mouse_event(2, 0, 0, 0, 0)
-        windll.user32.mouse_event(4, 0, 0, 0, 0)
-
-    def RightClick(self, point):
-        windll.user32.SetCursorPos(point.x, point.y)
-        windll.user32.mouse_event(8, 0, 0, 0, 0)
-        windll.user32.mouse_event(16, 0, 0, 0, 0)
+with mouse.Listener(on_click=on_click) as listener:
+    listener.join()
 
 
-mouse = Mouse()
-mouse.RightClick(PointXY())
-print(mouse)
+mouse = Controller()
+
+mouse.position = (0, 0)
+
+mouse.press(Button.left)
+mouse.release(Button.left)
+
+print('Jobs done.')

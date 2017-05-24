@@ -7,7 +7,7 @@ This projects receives a routine of mouse clicks, defined by the user, and repea
 How to use:
 * Click a mouse button (right or left button);
 * Press any keyboard key, other than ESC, to add another click;
-* Press again mouse button, etc;
+* Press mouse button again, etc;
 * When ESC is pressed, routine is finished and it is then repeated automatically.
 
 

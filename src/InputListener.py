@@ -8,20 +8,34 @@ from src.Position import Position
 
 
 class InputListener(object):
+    EndRoutineKey = Key.esc
+    EndStringKey = Key.ctrl_l
+
     def __init__(self):
         self.events = []
         self.IsRoutineComplete = False
 
+    def IsKeyEndOfRoutine(self, key: Key) -> bool:
+        return key == self.EndRoutineKey
+
+    def IsKeyEndOfString(self, key: Key) -> bool:
+        return key == self.EndStringKey
+
+    def AddKeyboardEvent(self, key: Key, pressed: bool):
+        if not(self.IsKeyEndOfRoutine(key) or self.IsKeyEndOfString(key)):
+            keyboardEvent = KeyboardEvent(key, pressed)
+            self.events.append(keyboardEvent)
+
     def PressKey(self, key) -> bool:
-        keyboardEvent = KeyboardEvent(key, True)
-        self.events.append(keyboardEvent)
+        self.AddKeyboardEvent(key, True)
 
     def ReleaseKey(self, key) -> bool:
-        keyboardEvent = KeyboardEvent(key, True)
-        self.events.append(keyboardEvent)
-        if key == Key.esc:
+        self.AddKeyboardEvent(key, False)
+        if self.IsKeyEndOfRoutine(key):
             self.IsRoutineComplete = True
-        return False  # Stop listener
+            return False
+        elif self.IsKeyEndOfString(key):
+            return False  # Stop listener
 
     def MouseClick(self, x: int, y: int, button: Button, pressed) -> bool:
         mouseEvent = MouseEvent(button, Position(x, y), pressed)

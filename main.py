@@ -3,6 +3,7 @@ from time import sleep
 from src.InputListener import InputListener
 
 timeInSecondsBetweenEvents = 1
+numberOfTimesToRepeatRoutine = 1
 IsRoutineComplete = False
 
 inputListener = InputListener()

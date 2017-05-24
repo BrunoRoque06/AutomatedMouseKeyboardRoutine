@@ -15,4 +15,4 @@ How to use:
 
 Main Keys:
 * __Left Control__, ends string and renews mouse button listener;
-* __Escape__, end routine, starts mimicking.
+* __Escape__, ends routine, and starts mimicking.

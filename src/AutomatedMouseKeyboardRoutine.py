@@ -9,7 +9,8 @@ class AutomatedMouseKeyboardRoutine(object):
 
     def Process(self):
         inputListener = self.ListenInputs()
-        self.RepeatInputs(inputListener)
+        for numberOfTimes in range(0, self.numberOfTimesToRepeatRoutine):
+            self.RepeatInputs(inputListener)
 
     def ListenInputs(self) -> InputListener:
         inputListener = InputListener()

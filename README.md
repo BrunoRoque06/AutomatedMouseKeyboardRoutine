@@ -1,18 +1,17 @@
 # Automated Mouse Keyboard Routine
 
 
-This projects receives a routine of mouse clicks and keyboard inputs, defined by the user, and repeats it. 
+This projects receives a routine of mouse clicks and/or keyboard inputs, defined by the user, and then repeats it. 
 
 
 How to use:
-* Click a mouse button (right or left button);
-* To add another mouse event, press Left Control;
-* Press mouse button again, repeat as many times as desired;
-* To add text, type it before pressing Left Control;
+* Click a mouse/keyboard key/keys;
+* Press Left Control to add another mouse/keyboard subroutine;
+* Repeat as many times as desired;
 * To end the routine press Escape;
 * Routine is then repeated.
 
 
 Main Keys:
-* __Left Control__, ends string and renews mouse button listener;
+* __Left Control__, ends mouse/keyboard subroutine;
 * __Escape__, ends routine, and starts mimicking.

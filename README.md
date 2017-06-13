@@ -1,4 +1,4 @@
-# Automated GUI Routine
+# Automated Mouse Keyboard Routine
 
 
 This projects receives a routine of mouse clicks and keyboard inputs, defined by the user, and repeats it. 

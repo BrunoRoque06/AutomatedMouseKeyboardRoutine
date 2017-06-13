@@ -2,7 +2,7 @@ from src.InputListener import InputListener
 from time import sleep
 
 
-class AutomatedGuiRoutine(object):
+class AutomatedMouseKeyboardRoutine(object):
     def __init__(self, timeInSecondsBetweenEvents: float, numberOfTimesToRepeatRoutine: int):
         self.timeInSecondsBetweenEvents = timeInSecondsBetweenEvents
         self.numberOfTimesToRepeatRoutine = numberOfTimesToRepeatRoutine

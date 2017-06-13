@@ -1,8 +1,8 @@
-from src.AutomatedGuiRoutine import AutomatedGuiRoutine
+from src.AutomatedMouseKeyboardRoutine import AutomatedMouseKeyboardRoutine
 
 
 timeInSecondsBetweenEvents = 1
 numberOfTimesToRepeatRoutine = 1
 
-automatedGuiRoutine = AutomatedGuiRoutine(timeInSecondsBetweenEvents, numberOfTimesToRepeatRoutine)
+automatedGuiRoutine = AutomatedMouseKeyboardRoutine(timeInSecondsBetweenEvents, numberOfTimesToRepeatRoutine)
 automatedGuiRoutine.Process()

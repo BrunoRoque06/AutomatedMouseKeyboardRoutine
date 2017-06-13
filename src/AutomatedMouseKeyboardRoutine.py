@@ -8,7 +8,12 @@ class AutomatedMouseKeyboardRoutine(object):
         self.numberOfTimesToRepeatRoutine = numberOfTimesToRepeatRoutine
 
     def Process(self):
+        print("\n# End Subroutine: Left Control")
+        print("# End Routine: Escape")
+
+        print("\nListening...")
         inputListener = self.ListenInputs()
+        print("\nRepeating...")
         for numberOfTimes in range(0, self.numberOfTimesToRepeatRoutine):
             self.RepeatInputs(inputListener)
 
@@ -16,7 +21,9 @@ class AutomatedMouseKeyboardRoutine(object):
         inputListener = InputListener()
         isRoutineComplete = False
         while not isRoutineComplete:
+            print("Press mouse key please...")
             inputListener.ListenOneMouseClick()
+            print("Press keyboard key(s) (optional) and end subroutine...\n")
             isRoutineComplete = inputListener.ListenOneKeyPressed()
         return inputListener
 
